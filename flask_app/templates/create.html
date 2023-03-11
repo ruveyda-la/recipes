@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h3 style="color:#F6BD60;  margin-top:50px;" >Add a New Recipe!</h3>
+        <form action="/recipes/new/add" method="post" style="background-color:#F5CAC3;border:solid 2px #84A59D ;border-radius: 10px;padding: 25px;">
+            <input type="hidden" name="user_id" value="{{session.user_id}}">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="textarea" class="form-control" name="description">
+            </div>
+            <div class="form-group">
+                <label for="instruction">Instruction</label>
+                <input type="textarea" class="form-control" name="instruction">
+            </div>
+            <div class="form-group">
+                <label for="date_made">Date Cooked/Made</label>
+                <input type="date" class="form-control" name="date_made">
+            </div>
+            <div class="form-group">
+                <label for="under_30">Under 30 minutes?</label><br>
+                <input type="radio" name="under_30" value="1">
+                <label  for="under_30">Yes</label><br>
+                <input type="radio" name="under_30" value="0">
+                <label for="under_30">No</label>
+                
+              </div>
+              
+            
+            <button type="submit" class="btn btn-primary" style="background-color:#84A59D">Submit</button>
+        </form>
+
+    </div>
+    
+</body>
+</html>
