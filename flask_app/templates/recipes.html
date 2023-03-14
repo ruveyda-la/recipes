@@ -48,7 +48,7 @@
                           {% if recipe.posted_by.id == session.user_id %}
                           <a href="/recipes/{{recipe.id}}" style="color:#F28482">view</a> |
                           <a href="/recipes/edit/{{recipe.id}}" style="color:#F28482">edit</a> |
-                          <a href="" style="color:#F28482">delete</a> 
+                          <a href="/recipes/delete/{{recipe.id}}" style="color:#F28482">delete</a> 
                           {% else %}
                           <a href="/recipes/{{recipe.id}}" style="color:#F28482">view</a>
                           {% endif %}

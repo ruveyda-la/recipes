@@ -48,6 +48,14 @@ def update_recipe():
     Recipe.change(request.form)
     return redirect("/recipes")
 
+@app.route('/recipes/delete/<int:id>')
+def delete_recipe(id):
+    if 'user_id' not in session:
+        return redirect("/logout")
+    Recipe.delete(id)
+    return redirect ("/recipes")
+
+
 
 
 

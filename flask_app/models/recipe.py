@@ -89,6 +89,12 @@ class Recipe:
         result=connectToMySQL(cls.db).query_db(query,data)
         return result
 
+    @classmethod
+    def delete(cls, id):
+        query = "DELETE FROM recipes  WHERE recipes.id= %(id)s;"
+        result=connectToMySQL(cls.db).query_db(query,{'id':id})
+        return result 
+
 
 
 
