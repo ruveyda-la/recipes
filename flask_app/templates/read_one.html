@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row" style="display:flex; align-items:center; gap:300px;">
+            <div class="col-md-4">
+                <h3 style="color:#F6BD60;  margin-top:50px;">Welcome {{session.first_name}}!</h3>
+            </div>
+            <div class="col-md-4" style="display:flex; gap:20px;">
+                <a href="/recipes" style="color:#F28482;margin-top:50px;">Back to recipes</a>
+                <a href="/logout" style="color:#F28482; margin-top:50px;">Logout</a>
+            </div>    
+        </div>
+        <div class="row" style="display:flex; align-items:center; gap:300px;">
+            <div class="col-md-4">
+                <h4 style="color:#84A59D;  margin-top:25px;">{{recipe.name}}</h4>
+            </div>
+            <div class="col-md-4" style="display:flex; gap:20px;">
+                <h6 style="color:#84A59D;  margin-top:25px;">Posted by:{{recipe.first_name}}</h6>
+            </div>    
+        </div>
+        <div class="row" style="border:solid 3px #84A59D; border-radius:10px; ">
+                <div class="col-md-12" style="margin-top:25px;">
+                    <div class="row">
+                        <div class="col-md-4">   
+                            <p style="color:#84A59D;">Description:</p>
+
+                        </div>
+                        <div class="col-md-8">
+                            <p>{{recipe.description}}</p>
+                            
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p style="color:#84A59D;">Under 30 minutes?:</p>
+                            
+
+                        </div>
+                        <div class="col-md-8">
+                            <p>{% if recipe.under_30 %}
+                                Yes
+                              {% else %}
+                                No
+                              {% endif %}</p>
+                            
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p style="color:#84A59D;">Instruction:</p>
+
+                        </div>
+                        <div class="col-md-8">
+                            <p>{{recipe.instruction}}</p>
+                            
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p style="color:#84A59D;">Date Made:</p>
+
+                        </div>
+                        <div class="col-md-8">
+                            <p>{{recipe.date_made}}</p>
+                            
+                        </div>
+
+                    </div>
+                  
+
+                </div>
+                
+
+            
+        </div>
+    </div>
+    
+</body>
+</html>

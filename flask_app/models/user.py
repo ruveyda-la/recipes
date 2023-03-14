@@ -59,21 +59,6 @@ class User:
                 VALUES (%(first_name)s,%(last_name)s,%(email)s,%(password)s);"""
         result=connectToMySQL(cls.db).query_db(query,data)
         return result
-
-# READ - SQL
-    # @classmethod
-    # def get_all_users(cls):
-    #     query = "SELECT * FROM users;"
-        
-    #     results = connectToMySQL(cls.db).query_db(query)
-    
-    #     users = []
-    
-    #     for result in results:
-    #         users.append( cls(result) )
-    #     return users
-        
-
         
 
     @classmethod
@@ -82,15 +67,6 @@ class User:
         result=connectToMySQL(cls.db).query_db(query,{'email':email})
         return result[0] if result else None
 
-
-# UPDATE - SQL
-    # @classmethod
-    # def change(cls,data):
-    #     query="""UPDATE users SET first_name=%(first_name)s, last_name=%(last_name)s,
-    #             email=%(email)s
-    #             WHERE id=%(id)s;"""
-    #     result=connectToMySQL(cls.db).query_db(query,data)
-    #     return result
 
 # DELETE - SQL
     # @classmethod

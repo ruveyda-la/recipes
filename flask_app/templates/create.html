@@ -9,8 +9,23 @@
 </head>
 <body>
     <div class="container">
-        <h3 style="color:#F6BD60;  margin-top:50px;" >Add a New Recipe!</h3>
+        <div class="row" style="display:flex; align-items:center; justify-content:space-between;">
+            <div class="col-md-4">
+                <h3 style="color:#F6BD60;  margin-top:50px;">Add a New Recipe!</h3>
+            </div>
+            <div class="col-md-4" style="display:flex; gap:20px;">
+                <a href="/recipes" style="color:#F28482">Back to recipes</a>
+                <a href="/logout" style="color:#F28482">Logout</a>
+            </div>    
+        </div>
         <form action="/recipes/new/add" method="post" style="background-color:#F5CAC3;border:solid 2px #84A59D ;border-radius: 10px;padding: 25px;">
+            {% with messages = get_flashed_messages() %}     
+                {% if messages %}                            
+                    {% for message in messages %}            
+                        <p>{{message}}</p>                   
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             <input type="hidden" name="user_id" value="{{session.user_id}}">
             <div class="form-group">
                 <label for="name">Name</label>
