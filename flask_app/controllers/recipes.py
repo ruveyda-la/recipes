@@ -27,8 +27,11 @@ def create_recipe():
 def show_recipe(id):
     if 'user_id' not in session:
         return redirect("/logout")
+    session['recipe_id']=id
     recipe = Recipe.get_one(id)
-    return render_template("read_one.html",recipe=recipe)
+    likers = Recipe.get_recipe_likers(id)
+    
+    return render_template("read_one.html",recipe=recipe, likers=likers)
 
 @app.route('/recipes/edit/<int:id>')
 def edit_recipe(id):
@@ -36,6 +39,7 @@ def edit_recipe(id):
         return redirect("/logout")
     recipe = Recipe.get_one(id)
     return render_template("edit.html",recipe=recipe)
+
 
 @app.route('/recipes/edit/update', methods=['post'])
 def update_recipe():

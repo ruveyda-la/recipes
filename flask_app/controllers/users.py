@@ -40,7 +40,8 @@ def login():
         flash("Invalid email or password!","log")
         return redirect("/")
     session['user_id']= user['id']
-    session['first_name']= user['first_name'] 
+    session['first_name']= user['first_name']
+    session['last_name']=user['last_name'] 
     return redirect("/recipes")
 
 

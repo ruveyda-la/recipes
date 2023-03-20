@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import MySQLConnection, connectToMySQL 
 from flask_app.models.user import User
+from flask_app.models.like import Like
 from flask_app import flash
 
 
@@ -19,6 +20,7 @@ class Recipe:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.posted_by=None
+        self.likes = 0
 
     @classmethod
     def save (cls, data):
@@ -49,6 +51,7 @@ class Recipe:
                 'updated_at':result['users.updated_at']
                 }
             recipe.posted_by=User(user_info)
+            recipe.likes=Like.count_like(result['id'])
             
         return recipes
 
@@ -76,10 +79,22 @@ class Recipe:
         return is_valid
     @classmethod
     def get_one(cls, id):
-        query = "SELECT * FROM recipes LEFT JOIN users ON users.id=recipes.user_id WHERE recipes.id= %(id)s;"
+        query = """SELECT * FROM recipes 
+        LEFT JOIN users ON users.id=recipes.user_id
+        WHERE recipes.id= %(id)s;"""
         result=connectToMySQL(cls.db).query_db(query,{'id':id})
         recipe = result[0]
-        return recipe 
+        return recipe
+
+    @classmethod
+    def get_recipe_likers(cls,id):
+        query = """SELECT * FROM recipes 
+        LEFT JOIN likes ON recipes.id=likes.recipe_id
+        LEFT JOIN users ON likes.user_id=users.id
+        WHERE recipes.id= %(id)s;"""
+        result=connectToMySQL(cls.db).query_db(query,{'id':id})
+        return result
+
 
     @classmethod
     def change(cls,data):

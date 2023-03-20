@@ -23,7 +23,7 @@
                 <h4 style="color:#84A59D;  margin-top:25px;">{{recipe.name}}</h4>
             </div>
             <div class="col-md-4" style="display:flex; gap:20px;">
-                <h6 style="color:#84A59D;  margin-top:25px;">Posted by:{{recipe.first_name}}</h6>
+                <h6 style="color:#84A59D;  margin-top:25px;">Posted by:{{recipe.first_name}} {{recipe.last_name}}</h6>
             </div>    
         </div>
         <div class="row" style="border:solid 3px #84A59D; border-radius:10px; ">
@@ -35,8 +35,6 @@
                         </div>
                         <div class="col-md-8">
                             <p>{{recipe.description}}</p>
-                            
-
                         </div>
 
                     </div>
@@ -78,7 +76,24 @@
                         </div>
 
                     </div>
-                  
+                    <div class="row">
+                        <div class="col-md-4">   
+                            <p style="color:#84A59D;">Liked by:</p>
+
+                        </div>
+                        <div class="col-md-8">
+                            {% for liker in likers %}
+                            <p>{{liker.first_name}} {{liker.last_name}}</p>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="button" onclick="window.location.href='/recipe/like/{{recipe.id}}';">Like</button>
+                        </div>
+                    </div>
+            
 
                 </div>
                 

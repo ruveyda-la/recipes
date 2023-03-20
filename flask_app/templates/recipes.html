@@ -27,6 +27,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Under 30 min</th>
                         <th scope="col">Posted By</th>
+                        <th scope="col">Likes</th>
                         <th scope="col">Actions</th>
                         
                       </tr>
@@ -44,6 +45,7 @@
                           {% endif %}
                         </td>
                         <td>{{recipe.posted_by.first_name}}</td>
+                        <td>{{recipe.likes}}</td>
                         <td>
                           {% if recipe.posted_by.id == session.user_id %}
                           <a href="/recipes/{{recipe.id}}" style="color:#F28482">view</a> |
