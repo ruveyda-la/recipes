@@ -82,11 +82,14 @@
 
                         </div>
                         <div class="col-md-8">
-                            {% for liker in likers %}
-                            <p>{{liker.first_name}} {{liker.last_name}}</p>
-                            {% endfor %}
+                                {% for liker in likers %}
+                                    {% if liker.first_name == None %}
+                                    <p>Be the first to like!</p>
+                                    {% else %}
+                                    <p>{{liker.first_name}} {{liker.last_name}}</p>
+                                    {% endif %}
+                                {% endfor %}   
                         </div>
-
                     </div>
                     <div class="row">
                         <div class="input-group-prepend">
