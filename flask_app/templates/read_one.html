@@ -92,9 +92,15 @@
                         </div>
                     </div>
                     <div class="row">
+                        {% if one_like == None %}
                         <div class="input-group-prepend">
                             <button class="btn btn-outline-secondary" type="button" onclick="window.location.href='/recipe/like/{{recipe.id}}';">Like</button>
                         </div>
+                        {% else %}
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="button" onclick="window.location.href='/recipe/unlike/{{recipe.id}}';">Unlike</button>
+                        </div>
+                        {% endif %}
                     </div>
             
 

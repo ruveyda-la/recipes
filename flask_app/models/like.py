@@ -17,7 +17,8 @@ class Like:
 
 
     @classmethod
-    def check_like(cls, user_id,recipe_id):
+    def delete_like(cls, user_id,recipe_id):
+        
         query = "DELETE FROM likes WHERE recipe_id= %(recipe_id)s AND user_id=%(user_id)s;"
         result=connectToMySQL(cls.db).query_db(query,{'user_id':user_id,'recipe_id':recipe_id})
         return result
@@ -34,10 +35,17 @@ class Like:
     def save_like(cls):
         user_id = session['user_id']
         recipe_id=session['recipe_id']
-        cls.check_like(user_id,recipe_id)
         query = "INSERT INTO likes (user_id,recipe_id) VALUES (%(user_id)s,%(recipe_id)s)"
         result=connectToMySQL(cls.db).query_db(query,{'user_id':user_id,'recipe_id':recipe_id})
         return result
+
+    @classmethod
+    def get_like(cls,user_id,recipe_id):
+        
+        query = "SELECT * FROM likes WHERE recipe_id= %(recipe_id)s AND user_id=%(user_id)s;"
+        result=connectToMySQL(cls.db).query_db(query,{'user_id':user_id,'recipe_id':recipe_id})
+        return result[0] if result else None 
+
         
 
         

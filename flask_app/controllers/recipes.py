@@ -1,5 +1,6 @@
 from flask_app import app, render_template, session, redirect,request
 from flask_app.models.recipe import Recipe
+from flask_app.models.like import Like
 
 @app.route("/recipes")
 def recipes():
@@ -30,8 +31,9 @@ def show_recipe(id):
     session['recipe_id']=id
     recipe = Recipe.get_one(id)
     likers = Recipe.get_recipe_likers(id)
+    one_like=Like.get_like(session['user_id'],session['recipe_id'])
     
-    return render_template("read_one.html",recipe=recipe, likers=likers)
+    return render_template("read_one.html",recipe=recipe, likers=likers, one_like = one_like)
 
 @app.route('/recipes/edit/<int:id>')
 def edit_recipe(id):
